@@ -1,0 +1,20 @@
+{
+  "name": "Back2Rc4",
+  "version": "1.0.0",
+  "description": "Backend of RC4Cal",
+  "main": "index.js",
+  "repository": "git@github.com:winsonhys/Back2Rc4.git",
+  "author": "<winsonheng@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^10.3.2",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "mysql": "^2.15.0",
+    "nodemon": "^1.17.5",
+    "typescript": "^2.9.1"
+  },
+  "scripts": {
+    "tsc:watch": "tsc -w"
+  }
+}
