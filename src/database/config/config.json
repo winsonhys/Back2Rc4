@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "rc4cal",
+    "password": "Failed123!",
+    "database": "rc4cal",
+    "host": "den1.mysql3.gear.host",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "rc4cal",
+    "password": "Failed123!",
+    "database": "rc4cal",
+    "host": "den1.mysql3.gear.host",
+    "dialect": "mysql"
+  }
+}
