@@ -5,7 +5,8 @@ modules.exports = {
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    dialect: "mysql"
+    dialect: "mysql",
+    operatorsAliases: false
   },
   test: {
     username: process.env.DB_USER,
@@ -13,7 +14,8 @@ modules.exports = {
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    dialect: "mysql"
+    dialect: "mysql",
+    operatorsAliases: false
   },
   production: {
     username: process.env.DB_USER,
@@ -21,6 +23,7 @@ modules.exports = {
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    dialect: "mysql"
+    dialect: "mysql",
+    operatorsAliases: false
   }
 };
