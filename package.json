@@ -13,17 +13,28 @@
     "@types/sequelize": "^4.27.20",
     "chai": "^4.1.2",
     "dotenv": "^6.0.0",
+    "dotenv-flow": "^0.1.0-beta.2",
     "express": "^4.16.3",
     "mocha": "^5.2.0",
     "morgan": "^1.9.0",
     "mysql2": "^1.5.3",
     "nodemon": "^1.17.5",
-    "sequelize": "^4.37.10",
+    "reflect-metadata": "^0.1.12",
     "sequelize-cli": "^4.0.0",
+    "sequelize-typescript": "^0.6.6-beta.1",
+    "sequelize@ne": "^4.37.10",
     "ts-node": "^6.1.0",
     "typescript": "^2.9.1"
   },
   "scripts": {
-    "tsc:watch": "tsc -w"
+    "tsc:watch": "tsc -w",
+    "sequelize": "./node_modules/.bin/sequelize",
+    "db-drop": "$npm_package_main_scripts_sequelize db:drop",
+    "db-create": "$npm_package_main_scripts_sequelize db:create",
+    "db-migrate": "$npm_package_main_scripts_sequelize db:migrate",
+    "test:migrate": "NODE_ENV=test yarn sequelize db:migrate",
+    "test:db-create": "NODE_ENV=test yarn sequelize db:create",
+    "test:db-drop": "NODE_ENV=test yarn sequelize db:drop",
+    "test:init": "yarn test:db-drop; yarn test:db-create; yarn test:migrate"
   }
 }
