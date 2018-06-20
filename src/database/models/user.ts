@@ -19,12 +19,12 @@ export default class User extends Model<User> {
   })
   id: string;
 
-  @Column
   @AllowNull(false)
+  @Column
   userName: string;
 
-  @Column
   @AllowNull(false)
+  @Column
   password: string;
 
   @CreatedAt
