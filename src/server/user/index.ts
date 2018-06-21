@@ -1,9 +1,9 @@
 import { Router } from "express";
-import createHandler from "./handler/create";
+import getHandler from "./handler/create";
 import validationParams from "./validators/create";
 
 const router = Router();
 
-router.get("/", validationParams, createHandler);
+router.get("/", validationParams, getHandler);
 
 export default router;
