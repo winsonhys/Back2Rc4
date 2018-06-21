@@ -3,10 +3,11 @@ module.exports = {
     return queryInterface.createTable("Users", {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.UUID
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4
       },
+
       userName: {
         allowNull: false,
         type: Sequelize.STRING
@@ -15,6 +16,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
+
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE

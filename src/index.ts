@@ -1,22 +1,18 @@
-import Sequelize from "sequelize";
+require("dotenv-flow").config();
+import createServer from "./server";
 
-const sequelize = new Sequelize("rc4cal", "rc4cal", "Failed123!", {
-  host: "den1.mysql3.gear.host",
-  dialect: "mysql",
-  operatorsAliases: false,
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000
+if (!process.env.NODE_ENV) {
+  throw new Error("You must set the NODE_ENV environment variable");
+}
+
+const ENV = process.env.NODE_ENV;
+
+const init = async () => {
+  try {
+    await createServer(ENV);
+  } catch (e) {
+    throw e;
   }
-});
+};
 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log("Connection established");
-  })
-  .catch(err => {
-    console.log("unable to connect", err);
-  });
+init();
