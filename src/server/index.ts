@@ -2,6 +2,8 @@ import express from "express";
 import config from "./config/config";
 import createDatabaseConnection from "../database";
 import userRoutes from "./user";
+import BodyParser from "body-parser";
+import ExpressValidator from "express-validator";
 
 const createServer = async environment => {
   const currentConfig = config[environment];
@@ -16,6 +18,10 @@ const createServer = async environment => {
     });
 
   const app = express();
+
+  //Middleware
+  app.use(BodyParser.json()); //Allows parsing of JSON http requests
+  app.use(ExpressValidator());
 
   app.use("/user", userRoutes); //Route definitions
 
