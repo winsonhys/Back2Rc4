@@ -1,4 +1,4 @@
-require("dotenv-flow").config();
+require("dotenv").config();
 import createServer from "./server";
 
 if (!process.env.NODE_ENV) {

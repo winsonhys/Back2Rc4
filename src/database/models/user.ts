@@ -21,7 +21,7 @@ export default class User extends Model<User> {
 
   @AllowNull(false)
   @Column
-  userName: string;
+  username: string;
 
   @AllowNull(false)
   @Column
