@@ -18,6 +18,9 @@ const createServer = async environment => {
     });
 
   const app = express();
+  app.all("/", (req, res) => {
+    res.send("connection success");
+  });
 
   //Middleware
   app.use(BodyParser.json()); //Allows parsing of JSON http requests
