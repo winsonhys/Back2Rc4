@@ -60,7 +60,9 @@ to start the server on localhost.
 ## Migrations
 
 <p>To migrate test database, do `yarn test:migrate`<p>
+  
 ### How to migrate
+  
 To migrate a database, **2 changes** are required.<br><br>
 First:<br>
 A migration file needs to be created in the migrations folder (command coming soon).<br><br>
