@@ -29,9 +29,9 @@
     "mysql2": "^1.5.3",
     "nodemon": "^1.17.5",
     "reflect-metadata": "^0.1.12",
+    "sequelize": "^4.38.0",
     "sequelize-cli": "^4.0.0",
     "sequelize-typescript": "^0.6.6-beta.1",
-    "sequelize@ne": "^4.37.10",
     "supertest": "^3.1.0",
     "ts-node": "^6.1.0",
     "typescript": "^2.9.1"
