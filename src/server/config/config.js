@@ -1,5 +1,5 @@
 const config = {
-  development: {
+  production: {
     host: process.env.SERVER_HOST,
     port: process.env.SERVER_PORT,
     dbName: process.env.DB_NAME

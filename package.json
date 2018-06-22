@@ -1,6 +1,9 @@
 {
   "name": "Back2Rc4",
   "version": "1.0.0",
+  "engines": {
+    "yarn" : "1.7.0"
+  },
   "description": "Backend of RC4Cal",
   "main": "index.js",
   "repository": "git@github.com:winsonhys/Back2Rc4.git",
@@ -37,6 +40,8 @@
     "typescript": "^2.9.1"
   },
   "scripts": {
+    "preinstall": "tsc",
+    "start": "node index.ts",
     "tsc:watch": "tsc -w",
     "sequelize": "./node_modules/.bin/sequelize",
     "db-drop": "$npm_package_main_scripts_sequelize db:drop",
