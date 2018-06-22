@@ -1,7 +1,7 @@
 const config = {
   production: {
     host: process.env.SERVER_HOST,
-    port: process.env.SERVER_PORT,
+    port: process.env.PORT,
     dbName: process.env.DB_NAME
   },
   test: {
