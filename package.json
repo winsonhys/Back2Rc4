@@ -2,7 +2,7 @@
   "name": "Back2Rc4",
   "version": "1.0.0",
   "engines": {
-    "yarn" : "1.7.0"
+    "yarn": "1.7.0"
   },
   "description": "Backend of RC4Cal",
   "main": "index.js",
@@ -40,7 +40,7 @@
     "typescript": "^2.9.1"
   },
   "scripts": {
-    "preinstall": "tsc",
+    "preinstall": "yarn tsc",
     "start": "node index.ts",
     "tsc:watch": "tsc -w",
     "sequelize": "./node_modules/.bin/sequelize",
