@@ -1,18 +1,20 @@
 import { Events } from "../../../database/models";
 import { validationResult } from "express-validator/check";
 
-const createEvents = async (req, res) => {
+const getEvents = async (req, res) => {
   const error = validationResult(req);
   if (!error.isEmpty()) {
     return res.status(400).send("Not valid user Id");
   }
+  const { title, start, end, userID } = req.body;
 
-  const events = await Events.findAll({
-    where: {
-      userId: req.query.userId
-    }
+  const events = await Events.create({
+    title,
+    start,
+    end,
+    userID
   });
   res.send(events);
 };
 
-export default createEvents;
+export default getEvents;
