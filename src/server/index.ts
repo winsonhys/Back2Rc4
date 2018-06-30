@@ -32,7 +32,7 @@ const createServer = async environment => {
   app.use("/user", userRoutes); //Route definitions
   app.use("/events", eventsRoutes);
 
-  const server = app.listen(currentConfig.port, currentConfig.host, () => {
+  const server = app.listen(currentConfig.port, () => {
     console.log(
       `Server is listening on ${currentConfig.port} at ${currentConfig.host}`
     );
