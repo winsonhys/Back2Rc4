@@ -15,7 +15,7 @@ const userGet = async (req, res) => {
     where
   });
   if (response !== null) {
-    res.status(200).send("User found!");
+    res.send(response);
   } else {
     res.status(404).send("User not found.");
   }

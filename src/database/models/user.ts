@@ -6,8 +6,10 @@ import {
   PrimaryKey,
   DataType,
   CreatedAt,
-  UpdatedAt
+  UpdatedAt,
+  HasMany
 } from "sequelize-typescript";
+import Events from "./events";
 
 @Table({ tableName: "Users" })
 export default class User extends Model<User> {
@@ -34,4 +36,7 @@ export default class User extends Model<User> {
   @UpdatedAt
   @Column
   updatedAt: Date;
+
+  @HasMany(() => Events)
+  events: Events[];
 }

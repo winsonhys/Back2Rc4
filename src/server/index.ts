@@ -1,9 +1,12 @@
 import express from "express";
-import config from "./config/config";
-import createDatabaseConnection from "../database";
-import userRoutes from "./user";
 import BodyParser from "body-parser";
 import ExpressValidator from "express-validator";
+import createDatabaseConnection from "../database";
+import config from "./config/config";
+
+//Routes
+import userRoutes from "./user";
+import eventsRoutes from "./events";
 
 const createServer = async environment => {
   const currentConfig = config[environment];
@@ -11,10 +14,10 @@ const createServer = async environment => {
   await Database.sequelize
     .authenticate()
     .then(() => {
-      console.log("Connection established!");
+      console.log("Connection to database established!");
     })
     .catch(e => {
-      console.error("Unable to connect.", e);
+      console.error("Unable to connect to database.", e);
     });
 
   const app = express();
@@ -27,6 +30,7 @@ const createServer = async environment => {
   app.use(ExpressValidator());
 
   app.use("/user", userRoutes); //Route definitions
+  app.use("/events", eventsRoutes);
 
   const server = app.listen(currentConfig.port, currentConfig.host, () => {
     console.log(

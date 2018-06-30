@@ -4,10 +4,11 @@ import * as Models from "./models";
 
 const createDBConnection = async env => {
   const sequelize = new Sequelize(config[env]);
-  sequelize.addModels([Models.User]);
+  sequelize.addModels([Models.User, Models.Events]);
   const dbObject = {
     sequelize,
-    User: Models.User
+    User: Models.User,
+    Events: Models.Events
   };
   return dbObject;
 };
