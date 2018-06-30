@@ -7,16 +7,17 @@ export const User = async (data = {}) => {
     password: faker.random.alphaNumeric(20),
     ...data
   });
+  console.log(User.id);
   return User;
 };
 
 export const Event = async (userId, data = {}) => {
-  const Event = await Model.Events.create({
+  const newEvent = await Model.Events.create({
     title: faker.lorem.word(),
     start: faker.date.past(),
     end: faker.date.future(),
     userId,
     ...data
   });
-  return Event;
+  return newEvent;
 };

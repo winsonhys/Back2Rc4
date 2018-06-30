@@ -30,7 +30,7 @@ describe("user - get", async () => {
       username: seeds[0].username,
       password: seeds[0].password
     });
-    expect(response.text).to.be.equal("User found!");
+    expect(response.body.id).to.be.equal(seeds[0].id);
     expect(response.status).to.be.equal(200);
   });
 

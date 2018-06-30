@@ -1,4 +1,4 @@
-import { Events } from "../../../database/models";
+import { Events, User } from "../../../database/models";
 import { validationResult } from "express-validator/check";
 
 const getEvents = async (req, res) => {
@@ -6,15 +6,19 @@ const getEvents = async (req, res) => {
   if (!error.isEmpty()) {
     return res.status(400).send("Not valid user Id");
   }
-  const { title, start, end, userID } = req.body;
+  const { title, start, end, userId } = req.body;
 
-  const events = await Events.create({
-    title,
-    start,
-    end,
-    userID
-  });
-  res.send(events);
+  try {
+    const events = await Events.create({
+      title,
+      start,
+      end,
+      userId
+    });
+    res.send(events);
+  } catch (e) {
+    res.status(404).send("userId does not match ones already in the database");
+  }
 };
 
 export default getEvents;

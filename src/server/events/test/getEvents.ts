@@ -1,14 +1,11 @@
 import { setupTestServer, truncateTables } from "../../test/utils";
-import { Events } from "../../../database/models";
 import { expect } from "chai";
 import request from "supertest";
-import moment from "moment";
-import * as faker from "faker";
 import * as seeder from "../../test/seedCreator";
 
-describe("events - create", async () => {
+describe("events - get", async () => {
   let server, Database, seeds;
-  const requestSender = () => request(server).post("/events");
+  const requestSender = () => request(server).get("/events");
 
   beforeEach("set up seeds", async () => {
     const serverDB = await setupTestServer(); //To obtain server and Database object
@@ -17,6 +14,8 @@ describe("events - create", async () => {
     seeds = [];
     //0, user
     seeds.push(await seeder.User());
+    //1, event
+    seeds.push(await seeder.Event(seeds[0].id));
   });
 
   afterEach("clearing seeds", async () => {
@@ -28,19 +27,18 @@ describe("events - create", async () => {
     expect(response.status).to.be.equal(400);
   });
 
-  it("should be able to create event", async () => {
-    const response = await requestSender().send({
-      title: "something",
-      start: moment().toISOString(),
-      end: moment().toISOString(),
-      userId: seeds[0].id
-    });
+  it("should be able get events of a user", async () => {
+    const response = await requestSender().query({ userId: seeds[0].id });
     expect(response.status).to.be.equal(200);
-    const event = await Events.findOne({
-      where: {
-        userId: seeds[0].id
-      }
-    });
-    expect(event.userId).to.be.equal(seeds[0].id);
+    expect(response.body[0].userId).to.be.equal(seeds[0].id);
+  });
+  it("shoudl not be able to get events of other users", async () => {
+    //2 another user
+    seeds.push(await seeder.User());
+    seeds.push(await seeder.Event(seeds[2].id));
+    const response = await requestSender().query({ userId: seeds[0].id });
+    expect(response.status).to.be.equal(200);
+    expect(response.body).to.have.lengthOf(1);
+    expect(response.body[0].userId).to.be.equal(seeds[0].id);
   });
 });

@@ -8,6 +8,7 @@ import {
   DataType,
   CreatedAt,
   UpdatedAt,
+  BelongsTo,
   ForeignKey
 } from "sequelize-typescript";
 
@@ -40,6 +41,12 @@ export default class Events extends Model<Events> {
   @UpdatedAt
   @Column
   updatedAt: Date;
+
+  @BelongsTo(() => User, {
+    foreignKey: { allowNull: false },
+    onDelete: "CASCADE"
+  })
+  user: User;
 
   @ForeignKey(() => User)
   @Column({

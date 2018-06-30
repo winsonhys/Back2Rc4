@@ -25,13 +25,14 @@ export const setupTestServer = async () => {
   return serverAndDb;
 };
 
-export const truncateTables = sequelize => {
+export const truncateTables = async sequelize => {
+  await sequelize.query("SET FOREIGN_KEY_CHECKS = 0");
   const tableNames = _.map(_.values(sequelize.models), "tableName");
-  const tableNamesString = _.map(
-    tableNames,
-    tableName => `${config[env].dbName}.${tableName}`
-  ).join(", ");
-  return sequelize.query("truncate table " + tableNamesString);
+  _.forEach(tableNames, async tableName => {
+    const dbTableName = `${config[env].dbName}.${tableName}`;
+    await sequelize.query("truncate table " + dbTableName);
+  });
+  await sequelize.query("SET FOREIGN_KEY_CHECKS = 1");
 };
 
 const closeServer = async server => {

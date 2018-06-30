@@ -5,5 +5,5 @@ export const postValidation = [
   body("title").isString(),
   body("start").isISO8601(),
   body("end").isISO8601(),
-  body("userID").isUUID()
+  body("userId").isUUID()
 ];

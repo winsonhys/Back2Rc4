@@ -14,10 +14,10 @@ const createServer = async environment => {
   await Database.sequelize
     .authenticate()
     .then(() => {
-      console.log("Connection established!");
+      console.log("Connection to database established!");
     })
     .catch(e => {
-      console.error("Unable to connect.", e);
+      console.error("Unable to connect to database.", e);
     });
 
   const app = express();
