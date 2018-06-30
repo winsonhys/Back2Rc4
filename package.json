@@ -1,6 +1,9 @@
 {
   "name": "Back2Rc4",
   "version": "1.0.0",
+  "engines": {
+    "yarn": "1.7.0"
+  },
   "description": "Backend of RC4Cal",
   "main": "index.js",
   "repository": "git@github.com:winsonhys/Back2Rc4.git",
@@ -37,6 +40,8 @@
     "typescript": "^2.9.1"
   },
   "scripts": {
+    "postinstall": "./node_modules/.bin/tsc",
+    "start": "node dist/index.js",
     "tsc:watch": "tsc -w",
     "sequelize": "./node_modules/.bin/sequelize",
     "db-drop": "$npm_package_main_scripts_sequelize db:drop",
@@ -47,7 +52,6 @@
     "test:db-drop": "NODE_ENV=test yarn sequelize db:drop",
     "test:init": "yarn test:db-drop; yarn test:db-create; yarn test:migrate",
     "test:start": "NODE_ENV=test ./node_modules/.bin/nodemon ./dist",
-    "test:watch":
-      "NODE_ENV=test ./node_modules/.bin/mocha -w ./dist/server/**/test/*.js ./dist/server/config/config.js"
+    "test:watch": "NODE_ENV=test ./node_modules/.bin/mocha -w ./dist/server/**/test/*.js ./dist/server/config/config.js"
   }
 }
