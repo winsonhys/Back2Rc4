@@ -29,7 +29,7 @@ describe.only("events - delete", async () => {
   });
 
   it("should be able to delete one event", async () => {
-    const response = await requestSender().send({ id: seeds[1].id });
+    const response = await requestSender().query({ id: seeds[1].id });
     expect(response.status).to.be.equal(200);
     const events = await Events.findAll({
       where: {
@@ -43,7 +43,7 @@ describe.only("events - delete", async () => {
     //2 another user
     seeds.push(await seeder.User());
     seeds.push(await seeder.Event(seeds[2].id));
-    const response = await requestSender().send({ id: seeds[1].id });
+    const response = await requestSender().query({ id: seeds[1].id });
     expect(response.status).to.be.equal(200);
     const events = await Events.findAll({
       where: {

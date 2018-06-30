@@ -7,4 +7,4 @@ export const postValidation = [
   body("end").isISO8601(),
   body("userId").isUUID()
 ];
-export const deleteValidation = [body("id").isUUID()];
+export const deleteValidation = [query("id").isUUID()];
