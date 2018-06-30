@@ -14,7 +14,7 @@ const getEvents = async (req, res) => {
         id
       }
     });
-    res.send("event destroyed");
+    res.send(id);
   } catch (e) {
     res
       .status(404)

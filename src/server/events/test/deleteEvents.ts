@@ -37,8 +37,9 @@ describe.only("events - delete", async () => {
       }
     });
     expect(events).to.have.lengthOf(0);
+    expect(response.text).to.be.equal(seeds[1].id);
   });
-  it("shoudl not be able delete events other users", async () => {
+  it("should not be able delete events other users", async () => {
     //2 another user
     seeds.push(await seeder.User());
     seeds.push(await seeder.Event(seeds[2].id));
