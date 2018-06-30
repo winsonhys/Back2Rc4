@@ -5,5 +5,6 @@ import * as handlers from "./handler";
 const router = Router();
 router.get("/", validationParams.getValidation, handlers.getEvents);
 router.post("/", validationParams.postValidation, handlers.createEvents);
+router.delete("/", validationParams.deleteValidation, handlers.deleteEvents); //TODO: To implement deletion of multiple events
 
 export default router;
