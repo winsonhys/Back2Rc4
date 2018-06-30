@@ -6,7 +6,7 @@ const getEvents = async (req, res) => {
   if (!error.isEmpty()) {
     return res.status(400).send("Not valid event id");
   }
-  const { id } = req.body;
+  const { id } = req.query;
 
   try {
     const events = await Events.destroy({
