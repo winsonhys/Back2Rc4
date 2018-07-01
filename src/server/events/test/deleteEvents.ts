@@ -4,7 +4,7 @@ import { expect } from "chai";
 import request from "supertest";
 import * as seeder from "../../test/seedCreator";
 
-describe.only("events - delete", async () => {
+describe("events - delete", async () => {
   let server, Database, seeds;
   const requestSender = () => request(server).delete("/events");
 
