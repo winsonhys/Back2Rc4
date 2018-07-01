@@ -29,6 +29,13 @@ export default class User extends Model<User> {
   @Column
   password: string;
 
+  @Column({
+    allowNull: false,
+    type: DataType.ENUM("STAFF", "RF", "HH", "CLUBSOC"),
+    defaultValue: "STAFF"
+  })
+  permissionLevel: string;
+
   @CreatedAt
   @Column
   createdAt: Date;

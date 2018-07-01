@@ -1,13 +1,14 @@
 import * as Model from "../../database/models";
 import * as faker from "faker";
+import { EVENT_TYPE, USER_PERMISSIONS } from "./data";
 
 export const User = async (data = {}) => {
   const User = await Model.User.create({
     username: faker.random.alphaNumeric(20),
     password: faker.random.alphaNumeric(20),
+    permissionLevel: USER_PERMISSIONS.STAFF,
     ...data
   });
-  console.log(User.id);
   return User;
 };
 
@@ -17,6 +18,7 @@ export const Event = async (userId, data = {}) => {
     start: faker.date.past(),
     end: faker.date.future(),
     userId,
+    type: EVENT_TYPE.NUS,
     ...data
   });
   return newEvent;
