@@ -5,6 +5,7 @@ export const postValidation = [
   body("title").isString(),
   body("start").isISO8601(),
   body("end").isISO8601(),
-  body("userId").isUUID()
+  body("userId").isUUID(),
+  body("type").isString()
 ];
 export const deleteValidation = [query("id").isUUID()];

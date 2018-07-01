@@ -3,8 +3,8 @@ import { Events } from "../../../database/models";
 import { expect } from "chai";
 import request from "supertest";
 import moment from "moment";
-import * as faker from "faker";
 import * as seeder from "../../test/seedCreator";
+import { EVENT_TYPE } from "../../test/data";
 
 describe("events - create", async () => {
   let server, Database, seeds;
@@ -33,10 +33,13 @@ describe("events - create", async () => {
       title: "something",
       start: moment().toISOString(),
       end: moment().toISOString(),
-      userId: seeds[0].id
+      userId: seeds[0].id,
+      type: EVENT_TYPE.NUS
     });
+    // console.log(response.text);
+    console.log(seeds[0]);
+    console.log(seeds[0].id);
     expect(response.status).to.be.equal(200);
-    console.log(response.body);
     const event = await Events.findOne({
       where: {
         userId: seeds[0].id

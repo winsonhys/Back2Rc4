@@ -34,6 +34,12 @@ export default class Events extends Model<Events> {
   @Column
   end: Date;
 
+  @Column({
+    allowNull: false,
+    type: DataType.ENUM("NUS", "COLLEGE", "HOUSE", "IG")
+  })
+  type: string;
+
   @CreatedAt
   @Column
   createdAt: Date;
