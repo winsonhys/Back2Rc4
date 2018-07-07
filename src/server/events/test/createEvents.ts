@@ -34,7 +34,8 @@ describe("events - create", async () => {
       start: moment().toISOString(),
       end: moment().toISOString(),
       userId: seeds[0].id,
-      type: EVENT_TYPE.NUS
+      type: EVENT_TYPE.NUS,
+      allDay: true
     });
     expect(response.status).to.be.equal(200);
     const event = await Events.findOne({

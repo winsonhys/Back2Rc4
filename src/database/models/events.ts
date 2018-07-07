@@ -36,6 +36,13 @@ export default class Events extends Model<Events> {
 
   @Column({
     allowNull: false,
+    type: DataType.BOOLEAN,
+    defaultValue: false
+  })
+  allDay: boolean;
+
+  @Column({
+    allowNull: false,
     type: DataType.ENUM("NUS", "COLLEGE", "HOUSE", "IG")
   })
   type: string;

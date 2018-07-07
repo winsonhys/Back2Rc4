@@ -27,6 +27,7 @@
     "express-validator": "^5.2.0",
     "faker": "^4.1.0",
     "joi": "^13.4.0",
+    "lolex": "^2.7.1",
     "mocha": "^5.2.0",
     "morgan": "^1.9.0",
     "mysql2": "^1.5.3",

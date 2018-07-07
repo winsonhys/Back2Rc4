@@ -1,6 +1,7 @@
 import createServer from "..";
 import _ from "lodash";
 import config from "../config/config";
+import Models from "../../database/models";
 require("dotenv").config();
 
 const env = process.env.NODE_ENV;
@@ -27,12 +28,10 @@ export const setupTestServer = async () => {
 
 export const truncateTables = async sequelize => {
   await sequelize.query("SET FOREIGN_KEY_CHECKS = 0");
-  const tableNames = _.map(_.values(sequelize.models), "tableName");
-  for (let tableName of tableNames) {
-    const dbTableName = `${config[env].dbName}.${tableName}`;
-    await sequelize.query("TRUNCATE table " + dbTableName);
+  const allModels = _.values(Models);
+  for (let Model of allModels) {
+    await Model.truncate({ cascade: true });
   }
-
   await sequelize.query("SET FOREIGN_KEY_CHECKS = 1");
 };
 
