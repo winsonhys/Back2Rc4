@@ -28,10 +28,11 @@ export const setupTestServer = async () => {
 export const truncateTables = async sequelize => {
   await sequelize.query("SET FOREIGN_KEY_CHECKS = 0");
   const tableNames = _.map(_.values(sequelize.models), "tableName");
-  _.forEach(tableNames, async tableName => {
+  for (let tableName of tableNames) {
     const dbTableName = `${config[env].dbName}.${tableName}`;
-    await sequelize.query("truncate table " + dbTableName);
-  });
+    await sequelize.query("TRUNCATE table " + dbTableName);
+  }
+
   await sequelize.query("SET FOREIGN_KEY_CHECKS = 1");
 };
 
