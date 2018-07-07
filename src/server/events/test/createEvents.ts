@@ -36,9 +36,6 @@ describe("events - create", async () => {
       userId: seeds[0].id,
       type: EVENT_TYPE.NUS
     });
-    // console.log(response.text);
-    console.log(seeds[0]);
-    console.log(seeds[0].id);
     expect(response.status).to.be.equal(200);
     const event = await Events.findOne({
       where: {
