@@ -19,6 +19,7 @@ export const Event = async (userId, data = {}) => {
     end: faker.date.future(),
     userId,
     type: EVENT_TYPE.NUS,
+    allDay: false,
     ...data
   });
   return newEvent;
