@@ -16,7 +16,8 @@ module.exports = {
     host: "localhost",
     port: 3306,
     dialect: "mysql",
-    operatorsAliases: false
+    operatorsAliases: false,
+    logging: false
   },
   production: {
     username: process.env.DB_USER,
