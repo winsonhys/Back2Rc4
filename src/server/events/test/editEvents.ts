@@ -4,7 +4,7 @@ import request from "supertest";
 import moment from "moment";
 import lolex from "lolex";
 import * as seeder from "../../test/seedCreator";
-import { EVENT_TYPE } from "../../test/data";
+import { EVENT_TYPE, LOCATIONS } from "../../test/data";
 
 describe("events - edit", async () => {
   let server, Database, seeds, clock;
@@ -38,9 +38,10 @@ describe("events - edit", async () => {
       start: now,
       end: now,
       type: EVENT_TYPE.IG,
-      allDay: true
+      allDay: true,
+      location: LOCATIONS.SR1
     });
-    const { title, start, end, allDay, type } = response.body;
+    const { title, start, end, allDay, type, location } = response.body;
     expect(response.status).to.equal(200);
     expect(title).to.equal("haha");
     expect(
@@ -51,6 +52,7 @@ describe("events - edit", async () => {
     ).to.equal(true);
     expect(type).to.equal(EVENT_TYPE.IG);
     expect(allDay).to.equal(true);
+    expect(location).to.equal(LOCATIONS.SR1);
   });
 
   it("Should not be able to update an event with unvalidated params", async () => {
@@ -58,7 +60,7 @@ describe("events - edit", async () => {
     const response = await requestSender().send({
       id: seeds[1].id,
       end: now,
-      type: EVENT_TYPE.IG,
+      type: "losted",
       allDay: true
     });
     expect(response.status).to.equal(400);
