@@ -22,11 +22,6 @@ describe("events - get", async () => {
     await truncateTables(Database.sequelize);
   });
 
-  it("should be a bad request", async () => {
-    const response = await requestSender();
-    expect(response.status).to.be.equal(400);
-  });
-
   it("should be able get events of a user", async () => {
     const response = await requestSender().query({ userId: seeds[0].id });
     expect(response.status).to.be.equal(200);

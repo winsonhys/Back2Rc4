@@ -4,7 +4,7 @@ import { expect } from "chai";
 import request from "supertest";
 import moment from "moment";
 import * as seeder from "../../test/seedCreator";
-import { EVENT_TYPE } from "../../test/data";
+import { EVENT_TYPE, LOCATIONS } from "../../test/data";
 
 describe("events - create", async () => {
   let server, Database, seeds;
@@ -23,11 +23,6 @@ describe("events - create", async () => {
     await truncateTables(Database.sequelize);
   });
 
-  it("should be a bad request", async () => {
-    const response = await requestSender();
-    expect(response.status).to.be.equal(400);
-  });
-
   it("should be able to create event", async () => {
     const response = await requestSender().send({
       title: "something",
@@ -35,7 +30,8 @@ describe("events - create", async () => {
       end: moment().toISOString(),
       userId: seeds[0].id,
       type: EVENT_TYPE.NUS,
-      allDay: true
+      allDay: true,
+      location: LOCATIONS.TR2
     });
     expect(response.status).to.be.equal(200);
     const event = await Events.findOne({

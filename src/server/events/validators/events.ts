@@ -23,6 +23,9 @@ export const postValidation = [
     .exists(),
   body("allDay")
     .isBoolean()
+    .exists(),
+  body("location")
+    .isString()
     .exists()
 ];
 export const deleteValidation = [
@@ -34,7 +37,7 @@ export const deleteValidation = [
 export const updateValidation = [
   body("id")
     .isUUID()
-    .exists(),
+    .optional(),
   body("title")
     .isString()
     .optional(),
@@ -49,5 +52,8 @@ export const updateValidation = [
     .optional(),
   body("allDay")
     .isBoolean()
+    .optional(),
+  body("location")
+    .isString()
     .optional()
 ];

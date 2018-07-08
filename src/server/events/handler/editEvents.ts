@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { Events } from "../../../database/models";
 import { validationResult } from "express-validator/check";
 
@@ -14,21 +15,18 @@ const editEvents = async (req, res) => {
       id
     }
   });
-  const { title, start, end, type, allDay } = req.body;
+  const { title, start, end, type, allDay, location } = req.body;
+  const updatedEvent = _.omit(req.body, "id");
   try {
     await event.update({
       ...event,
-      title,
-      start,
-      end,
-      type,
-      allDay
+      ...updatedEvent
     });
     await event.reload();
     res.send(event);
   } catch (e) {
-    res.status(400).send("Unable to update");
     console.error(e);
+    res.status(400).send("Unable to update");
   }
 };
 

@@ -1,6 +1,6 @@
 import * as Model from "../../database/models";
 import * as faker from "faker";
-import { EVENT_TYPE, USER_PERMISSIONS } from "./data";
+import { EVENT_TYPE, USER_PERMISSIONS, LOCATIONS } from "./data";
 
 export const User = async (data = {}) => {
   const User = await Model.User.create({
@@ -20,6 +20,7 @@ export const Event = async (userId, data = {}) => {
     userId,
     type: EVENT_TYPE.NUS,
     allDay: false,
+    location: LOCATIONS.TR1,
     ...data
   });
   return newEvent;
