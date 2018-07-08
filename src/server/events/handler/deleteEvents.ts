@@ -17,10 +17,10 @@ const getEvents = async (req, res) => {
     });
     res.send(id);
   } catch (e) {
+    console.error("event id does not match ones already in the database");
     res
       .status(404)
       .send("event id does not match ones already in the database");
-    console.error("event id does not match ones already in the database");
   }
 };
 

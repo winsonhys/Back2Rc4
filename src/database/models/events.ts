@@ -47,6 +47,24 @@ export default class Events extends Model<Events> {
   })
   type: string;
 
+  @Column({
+    allowNull: false,
+    type: DataType.ENUM(
+      "TR1",
+      "TR2",
+      "TR3",
+      "TR4",
+      "SR1",
+      "SR2",
+      "SR3",
+      "SR4",
+      "SR5",
+      "SR6",
+      "MPH"
+    )
+  })
+  location: string;
+
   @CreatedAt
   @Column
   createdAt: Date;

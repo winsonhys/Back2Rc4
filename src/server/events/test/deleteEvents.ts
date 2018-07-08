@@ -23,11 +23,6 @@ describe("events - delete", async () => {
     await truncateTables(Database.sequelize);
   });
 
-  it("should be a bad request", async () => {
-    const response = await requestSender();
-    expect(response.status).to.be.equal(400);
-  });
-
   it("should be able to delete one event", async () => {
     const response = await requestSender().query({ id: seeds[1].id });
     expect(response.status).to.be.equal(200);

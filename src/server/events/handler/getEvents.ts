@@ -7,12 +7,16 @@ const createEvents = async (req, res) => {
     return res.status(400).send("Not valid user Id");
   }
 
-  const events = await Events.findAll({
-    where: {
-      userId: req.query.userId
-    }
-  });
-  res.send(events);
+  try {
+    const events = await Events.findAll({
+      where: {
+        userId: req.query.userId
+      }
+    });
+    res.send(events);
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 export default createEvents;
