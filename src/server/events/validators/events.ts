@@ -35,9 +35,9 @@ export const deleteValidation = [
 ];
 
 export const updateValidation = [
-  body("id")
-    .isUUID()
-    .exists(),
+  // body("id")
+  //   .isUUID() //TODO: Not working for some reason
+  //   .exists(),
   body("title")
     .isString()
     .optional(),
