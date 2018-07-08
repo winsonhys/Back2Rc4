@@ -10,12 +10,11 @@ const editEvents = async (req, res) => {
     return res.status(400).send("Not valid event id");
   }
   const { id } = req.body;
+  let eventId = { id };
   let event;
   try {
     event = await Events.findOne({
-      where: {
-        id
-      }
+      where: eventId
     });
   } catch (e) {
     console.error(e);
