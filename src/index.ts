@@ -1,9 +1,10 @@
-require("dotenv").config();
-import createServer from "./server";
-
 if (!process.env.NODE_ENV) {
   throw new Error("You must set the NODE_ENV environment variable");
 }
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+import createServer from "./server";
 
 const ENV = process.env.NODE_ENV;
 
