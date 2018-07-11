@@ -2,6 +2,7 @@ import express from "express";
 import BodyParser from "body-parser";
 import ExpressValidator from "express-validator";
 import createDatabaseConnection from "../database";
+import jwt from "express-jwt";
 import config from "./config/config";
 
 //Routes
@@ -49,6 +50,7 @@ const createServer = async environment => {
     // Pass to next layer of middleware
     next();
   });
+  app.use(jwt({ secret: process.env.SECRET_KEY }).unless({ path: ["/user"] }));
   app.use(BodyParser.json()); //Allows parsing of JSON http requests
   app.use(ExpressValidator());
 

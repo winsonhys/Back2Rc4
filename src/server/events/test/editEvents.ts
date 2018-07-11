@@ -7,8 +7,7 @@ import * as seeder from "../../test/seedCreator";
 import { EVENT_TYPE, LOCATIONS } from "../../test/data";
 
 describe("events - edit", async () => {
-  let server, Database, seeds, clock;
-  const requestSender = () => request(server).patch("/events");
+  let server, Database, seeds, clock, requestSender;
 
   beforeEach("set up seeds", async () => {
     clock = lolex.install({
@@ -19,6 +18,11 @@ describe("events - edit", async () => {
     server = serverDB.server;
     Database = serverDB.Database;
     seeds = [];
+    const signedToken = await seeder.getAuth();
+    requestSender = () =>
+      request(server)
+        .patch("/events")
+        .set({ Authorization: `Bearer ${signedToken}` });
     //0, user
     seeds.push(await seeder.User());
     //1, event
