@@ -8,5 +8,5 @@ install: yarn
 cache:
   yarn: true
 script: 
-  -yarn tsc
-  -yarn test:run
+  - yarn tsc
+  - yarn test:run
