@@ -5,14 +5,18 @@ import request from "supertest";
 import * as seeder from "../../test/seedCreator";
 
 describe("events - delete", async () => {
-  let server, Database, seeds;
-  const requestSender = () => request(server).delete("/events");
+  let server, Database, seeds, requestSender;
 
   beforeEach("set up seeds", async () => {
     const serverDB = await setupTestServer(); //To obtain server and Database object
     server = serverDB.server;
     Database = serverDB.Database;
     seeds = [];
+    const signedToken = await seeder.getAuth();
+    requestSender = () =>
+      request(server)
+        .delete("/events")
+        .set({ Authorization: `Bearer ${signedToken}` });
     //0, user
     seeds.push(await seeder.User());
     //1, event
