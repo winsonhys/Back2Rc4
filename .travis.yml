@@ -9,4 +9,3 @@ cache:
   yarn: true
 script: 
   - yarn tsc
-  - yarn test:run
