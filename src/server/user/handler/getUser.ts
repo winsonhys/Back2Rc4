@@ -18,10 +18,10 @@ const userGet = async (req, res) => {
   if (response !== null) {
     const signedToken = await jwt.sign(
       { username: response.username, permissonLevel: response.permissionLevel },
-      "toh the fck out"
+      process.env.SECRET_KEY
     );
 
-    res.send(signedToken);
+    res.send({ user: response, token: signedToken });
   } else {
     res.status(404).send("User not found.");
   }

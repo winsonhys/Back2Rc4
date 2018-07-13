@@ -40,7 +40,7 @@ const createServer = async environment => {
     // Request headers you wish to allow
     res.setHeader(
       "Access-Control-Allow-Headers",
-      "X-Requested-With,content-type"
+      "X-Requested-With,content-type,Authorization"
     );
 
     // Set to true if you need the website to include cookies in the requests sent
