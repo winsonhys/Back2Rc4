@@ -7,7 +7,8 @@ import {
   DataType,
   CreatedAt,
   UpdatedAt,
-  HasMany
+  HasMany,
+  Unique
 } from "sequelize-typescript";
 import Events from "./events";
 
@@ -28,6 +29,11 @@ export default class User extends Model<User> {
   @AllowNull(false)
   @Column
   password: string;
+
+  @AllowNull(false)
+  @Unique
+  @Column
+  email: string;
 
   @Column({
     allowNull: false,

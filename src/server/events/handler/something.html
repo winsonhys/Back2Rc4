@@ -1,0 +1,52 @@
+<div style="text-align: center;">
+    <p>A swap has been requested by
+        <span style="color: #ff6600;">
+            <strong>${ eventTo.user.username }
+            </strong>
+        </span>
+    </p>
+    <p>Event that
+        <span style="color: #ff6600;">${ eventTo.user.username }
+        </span> wants to swap with you:
+        <br />
+        <span style="color: #3366ff;">
+            Event name: ${ eventFrom.title }
+        </span>
+        <br />
+        <span style="color: #3366ff;">
+            Event time start: ${moment(eventFrom.start) .local() .format("dddd, MMMM Do YYYY, h:mm a")}
+        </span>
+        <br />
+        <span style="color: #3366ff;">
+            Event time end: ${moment( eventFrom.end ) .local() .format("dddd, MMMM Do YYYY, h:mm a")}
+        </span>
+        <br />
+
+        <span style="color: #3366ff;">
+            Event location: ${ eventFrom.location }
+        </span>
+        <br />
+        <br />
+        <br />Your event
+        <strong>to be swapped</strong>:
+        <br />
+        <br />
+        <span style="color: #008000;">
+            Event name: ${eventTo.title}
+        </span>
+        <br />
+        <span style="color: #008000;">
+            Event time start: ${moment(eventTo.start) .local() .format("dddd, MMMM Do YYYY, h:mm a")}
+        </span>
+        <br />
+        <span style="color: #008000;">
+            Event time end: ${moment(eventTo.end) .local() .format("dddd, MMMM Do YYYY, h:mm a")}
+        </span>
+        <br />
+        <span style="color: #008000;">
+            Event location: ${eventTo.location}
+        </span>
+        <br />
+        <br />To agree to the swap, please click below.</p>
+    <a href="EVENT_SWAP_LINK" class="button">Swap Event</a>
+</div>

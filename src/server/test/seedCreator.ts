@@ -16,12 +16,13 @@ export const User = async (data = {}) => {
     username: faker.random.alphaNumeric(20),
     password: faker.random.alphaNumeric(20),
     permissionLevel: USER_PERMISSIONS.STAFF,
+    email: faker.internet.email(),
     ...data
   });
   return User;
 };
 
-export const Event = async (userId, data = {}) => {
+export const Event = async (userId: string, data = {}) => {
   const newEvent = await Model.Events.create({
     title: faker.lorem.word(),
     start: faker.date.past(),

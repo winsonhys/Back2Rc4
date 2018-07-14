@@ -35,9 +35,9 @@ export const deleteValidation = [
 ];
 
 export const updateValidation = [
-  // body("id")
-  //   .isUUID() //TODO: Not working for some reason
-  //   .exists(),
+  body("id")
+    .isUUID()
+    .exists(),
   body("title")
     .isString()
     .optional(),
@@ -56,4 +56,13 @@ export const updateValidation = [
   body("location")
     .isString()
     .optional()
+];
+
+export const requestSwapValidation = [
+  body("eventIdFrom")
+    .isUUID()
+    .exists(),
+  body("eventIdTo")
+    .isUUID()
+    .exists()
 ];
