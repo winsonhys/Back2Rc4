@@ -1,10 +1,10 @@
-import { setupTestServer, truncateTables } from "../../test/utils";
-import { Events } from "../../../database/models";
+import { setupTestServer, truncateTables } from "server/test/utils";
+import { Events } from "database/models";
 import { expect } from "chai";
 import request from "supertest";
 import moment from "moment";
-import * as seeder from "../../test/seedCreator";
-import { EVENT_TYPE, LOCATIONS } from "../../test/data";
+import * as seeder from "server/test/seedCreator";
+import { EVENT_TYPE, LOCATIONS } from "server/test/data";
 
 describe("events - create", async () => {
   let server, Database, seeds, requestSender;

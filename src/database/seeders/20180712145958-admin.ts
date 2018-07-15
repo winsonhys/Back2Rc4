@@ -1,6 +1,6 @@
 import moment from "moment";
 import * as faker from "faker";
-import { USER_PERMISSIONS } from "./../../server/test/data";
+import { USER_PERMISSIONS } from "server/test/data";
 import { QueryInterface, DataTypes } from "sequelize";
 
 module.exports = {

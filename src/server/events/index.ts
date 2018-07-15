@@ -8,9 +8,10 @@ router.post("/", validationParams.postValidation, handlers.createEvents);
 router.delete("/", validationParams.deleteValidation, handlers.deleteEvents); //TODO: To implement deletion of multiple events
 router.patch("/", validationParams.updateValidation, handlers.editEvents);
 router.post(
-  "/swap",
-  validationParams.requestSwapValidation,
+  "/swapRequest",
+  validationParams.swapValidation,
   handlers.requestSwap
 );
+router.post("/eventSwap", validationParams.swapValidation, handlers.eventSwap);
 
 export default router;

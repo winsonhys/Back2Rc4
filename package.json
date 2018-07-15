@@ -63,6 +63,6 @@
     "test:init": "yarn test:db-drop; yarn test:db-create; yarn test:migrate",
     "test:start": "NODE_ENV=test ./node_modules/.bin/nodemon ./dist",
     "test:run": "NODE_ENV=test ./node_modules/.bin/mocha ./dist/server/**/test/*.js ./dist/server/config/config.js",
-    "test:watch": "NODE_ENV=test ./node_modules/.bin/mocha -w ./dist/server/**/test/*.js ./dist/server/config/config.js"
+    "test:watch": "NODE_ENV=test NODE_PATH=./dist ./node_modules/.bin/mocha -w ./dist/server/**/test/*.js ./dist/server/config/config.js"
   }
 }
