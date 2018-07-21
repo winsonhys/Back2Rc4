@@ -1,7 +1,7 @@
-import { Events } from "../../../database/models";
+import { Events } from "database/models";
 import { validationResult } from "express-validator/check";
 
-const getEvents = async (req, res) => {
+const deleteEvent = async (req, res) => {
   const error = validationResult(req);
   if (!error.isEmpty()) {
     console.error("Not valid event id");
@@ -24,4 +24,4 @@ const getEvents = async (req, res) => {
   }
 };
 
-export default getEvents;
+export default deleteEvent;

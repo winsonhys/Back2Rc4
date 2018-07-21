@@ -1,10 +1,7 @@
+import * as _ from "lodash";
+import { EVENT_TYPE, LOCATIONS } from "server/test/data";
 import { body, query } from "express-validator/check";
 
-export const getValidation = [
-  query("userId")
-    .isUUID()
-    .exists()
-];
 export const postValidation = [
   body("title")
     .isString()
@@ -48,13 +45,13 @@ export const updateValidation = [
     .isISO8601()
     .optional(),
   body("type")
-    .isString()
+    .isIn(_.values(EVENT_TYPE))
     .optional(),
   body("allDay")
     .isBoolean()
     .optional(),
   body("location")
-    .isString()
+    .isIn(_.values(LOCATIONS))
     .optional()
 ];
 

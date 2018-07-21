@@ -1,7 +1,7 @@
-import { setupTestServer, truncateTables } from "../../test/utils";
+import { setupTestServer, truncateTables } from "server/test/utils";
 import { expect } from "chai";
 import request from "supertest";
-import * as seeder from "../../test/seedCreator";
+import * as seeder from "server/test/seedCreator";
 
 describe("events - get", async () => {
   let server, Database, seeds, requestSender;
@@ -29,15 +29,14 @@ describe("events - get", async () => {
   it("should be able get events of a user", async () => {
     const response = await requestSender().query({ userId: seeds[0].id });
     expect(response.status).to.be.equal(200);
-    expect(response.body[0].userId).to.be.equal(seeds[0].id);
+    expect(response.body).to.have.lengthOf(1);
   });
-  it("shoudl not be able to get events of other users", async () => {
+  it("shoudl be able to get events of other users", async () => {
     //2 another user
     seeds.push(await seeder.User());
     seeds.push(await seeder.Event(seeds[2].id));
     const response = await requestSender().query({ userId: seeds[0].id });
     expect(response.status).to.be.equal(200);
-    expect(response.body).to.have.lengthOf(1);
-    expect(response.body[0].userId).to.be.equal(seeds[0].id);
+    expect(response.body).to.have.lengthOf(2);
   });
 });

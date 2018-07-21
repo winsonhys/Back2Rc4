@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { Events } from "../../../database/models";
+import { Events } from "database/models";
 import { validationResult } from "express-validator/check";
 
 const editEvents = async (req, res) => {
@@ -7,7 +7,7 @@ const editEvents = async (req, res) => {
 
   if (!error.isEmpty()) {
     console.error(error.array());
-    return res.status(400).send("Not valid event id");
+    return res.status(400).send("Payload does not pass verification");
   }
   const { id } = req.body;
   let event;

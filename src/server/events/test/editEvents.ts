@@ -1,10 +1,10 @@
-import { setupTestServer, truncateTables } from "../../test/utils";
+import { setupTestServer, truncateTables } from "server/test/utils";
 import { expect } from "chai";
 import request from "supertest";
 import moment from "moment";
 import lolex from "lolex";
-import * as seeder from "../../test/seedCreator";
-import { EVENT_TYPE, LOCATIONS } from "../../test/data";
+import * as seeder from "server/test/seedCreator";
+import { EVENT_TYPE, LOCATIONS } from "server/test/data";
 
 describe("events - edit", async () => {
   let server, Database, seeds, clock, requestSender;
@@ -68,6 +68,6 @@ describe("events - edit", async () => {
       allDay: true
     });
     expect(response.status).to.equal(400);
-    expect(response.text).to.equal("Unable to update");
+    expect(response.text).to.equal("Payload does not pass verification");
   });
 });
