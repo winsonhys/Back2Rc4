@@ -1,11 +1,11 @@
 import { Events } from "database/models";
 import { validationResult } from "express-validator/check";
 
-const getEvents = async (req, res) => {
+const createEvents = async (req, res) => {
   const error = validationResult(req);
   if (!error.isEmpty()) {
     console.error(error.array());
-    return res.status(401).send("Not valid user Id");
+    return res.status(401).send("Payload does not pass verification");
   }
   const { title, start, end, userId, type, location } = req.body;
   //TODO: Back end validation for clashing locations
@@ -25,4 +25,4 @@ const getEvents = async (req, res) => {
   }
 };
 
-export default getEvents;
+export default createEvents;

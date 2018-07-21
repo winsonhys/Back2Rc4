@@ -28,9 +28,10 @@ export const setupTestServer = async () => {
 
 export const truncateTables = async sequelize => {
   const allModels = _.keys(Models);
-  const deletionQueries = allModels.map(async key => {
-    sequelize.query(`DELETE FROM ${key}`);
-    sequelize.query(`ALTER TABLE ${key} AUTO_INCREMENT = 1;`);
+  const deletionQueries = allModels.map(key => {
+    return sequelize.query(`DELETE FROM ${key}`).then(() => {
+      sequelize.query(`ALTER TABLE ${key} AUTO_INCREMENT = 1;`);
+    });
   });
   await Promise.all(deletionQueries);
 };
