@@ -27,12 +27,12 @@ export const setupTestServer = async () => {
 };
 
 export const truncateTables = async sequelize => {
-  await sequelize.query("SET FOREIGN_KEY_CHECKS = 0");
-  const allModels = _.values(Models);
-  for (let Model of allModels) {
-    await Model.truncate({ cascade: true });
-  }
-  await sequelize.query("SET FOREIGN_KEY_CHECKS = 1");
+  const allModels = _.keys(Models);
+  const deletionQueries = allModels.map(async key => {
+    sequelize.query(`DELETE FROM ${key}`);
+    sequelize.query(`ALTER TABLE ${key} AUTO_INCREMENT = 1;`);
+  });
+  await Promise.all(deletionQueries);
 };
 
 const closeServer = async server => {

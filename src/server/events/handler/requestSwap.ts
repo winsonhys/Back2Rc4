@@ -2,7 +2,7 @@ import moment from "moment";
 import { validationResult } from "express-validator/check";
 import NodeMailer from "nodemailer";
 import { Response, Request } from "express";
-import { Events, User } from "../../../database/models";
+import { Events, Users } from "database/models";
 import { MailOptions } from "nodemailer/lib/json-transport";
 
 const requestSwap = async (req: Request, res: Response) => {
@@ -27,7 +27,7 @@ const requestSwap = async (req: Request, res: Response) => {
       where: {
         id: eventIdTo
       },
-      include: [User]
+      include: [Users]
     });
   } catch (e) {
     res.status(404).send("eventTo not found");

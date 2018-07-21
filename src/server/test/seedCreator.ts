@@ -12,7 +12,7 @@ export const getAuth = async () => {
 };
 
 export const User = async (data = {}) => {
-  const User = await Model.User.create({
+  const User = await Model.Users.create({
     username: faker.random.alphaNumeric(20),
     password: faker.random.alphaNumeric(20),
     permissionLevel: USER_PERMISSIONS.STAFF,
