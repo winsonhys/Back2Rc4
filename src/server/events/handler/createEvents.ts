@@ -1,4 +1,4 @@
-import { Events } from "../../../database/models";
+import { Events } from "database/models";
 import { validationResult } from "express-validator/check";
 
 const getEvents = async (req, res) => {

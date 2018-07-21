@@ -1,4 +1,4 @@
-import { Users } from "../../../database/models";
+import { Users } from "database/models";
 import { validationResult } from "express-validator/check";
 
 const createUser = async (req, res) => {

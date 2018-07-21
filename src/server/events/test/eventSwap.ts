@@ -1,4 +1,4 @@
-import { SwapEventsPayload } from "./../handler/eventSwap";
+import { SwapEventsPayload } from "server/events/handler/eventSwap";
 import { setupTestServer, truncateTables } from "server/test/utils";
 import { expect } from "chai";
 import request from "supertest";
