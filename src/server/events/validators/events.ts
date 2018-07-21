@@ -58,7 +58,7 @@ export const updateValidation = [
     .optional()
 ];
 
-export const requestSwapValidation = [
+export const swapValidation = [
   body("eventIdFrom")
     .isUUID()
     .exists(),

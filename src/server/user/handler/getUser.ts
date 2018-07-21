@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { validationResult } from "express-validator/check";
-import { User } from "../../../database/models";
+import { Users } from "database/models";
 
 const userGet = async (req, res) => {
   const error = validationResult(req);
@@ -12,7 +12,7 @@ const userGet = async (req, res) => {
     username,
     password
   };
-  const response = await User.findOne({
+  const response = await Users.findOne({
     where
   });
   if (response !== null) {
