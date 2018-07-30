@@ -2,7 +2,7 @@
   "name": "Back2Rc4",
   "version": "1.0.0",
   "engines": {
-    "yarn": "1.7.0"
+    "yarn": "1.9.2"
   },
   "description": "Backend of RC4Cal",
   "main": "index.js",
