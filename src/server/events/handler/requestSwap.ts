@@ -102,7 +102,7 @@ const requestSwap = async (req: Request, res: Response) => {
         </span>
         <br />
         <br />To agree to the swap, please click below.</p>
-    <a href="localhost:3000/successfulSwap/${eventIdFrom}&${eventIdTo}" class="button">Swap Event</a>
+    <a href="localhost:3000/successfulSwap/?eventIdFrom=${eventIdFrom}&eventIdTo=${eventIdTo}" class="button">Swap Event</a>
 </div>`
   };
 
