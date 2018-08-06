@@ -50,7 +50,11 @@ const createServer = async environment => {
     // Pass to next layer of middleware
     next();
   });
-  app.use(jwt({ secret: process.env.SECRET_KEY }).unless({ path: ["/user"] }));
+  app.use(
+    jwt({ secret: process.env.SECRET_KEY }).unless({
+      path: ["/user", "/events/eventSwap"]
+    })
+  );
   app.use(BodyParser.json()); //Allows parsing of JSON http requests
   app.use(ExpressValidator());
 
