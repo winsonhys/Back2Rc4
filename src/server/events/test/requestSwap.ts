@@ -29,7 +29,7 @@ describe("events - send swap request", async () => {
     await truncateTables(Database.sequelize);
   });
 
-  it("should be able to send an email to swap", async () => {
+  it.only("should be able to send an email to swap", async () => {
     const response = await requestSender().send({
       eventIdFrom: seeds.event1.id,
       eventIdTo: seeds.event2.id
