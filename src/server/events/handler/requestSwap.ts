@@ -4,6 +4,7 @@ import NodeMailer from "nodemailer";
 import { Response, Request } from "express";
 import { Events, Users } from "database/models";
 import { MailOptions } from "nodemailer/lib/json-transport";
+import QueryString from "query-string";
 
 const requestSwap = async (req: Request, res: Response) => {
   const error = validationResult(req);
@@ -40,6 +41,13 @@ const requestSwap = async (req: Request, res: Response) => {
       pass: process.env.EMAIL_PASSWORD
     }
   });
+  let url = QueryString.stringify({
+    eventFromId: eventFrom.id,
+    eventToId: eventTo.id
+  });
+
+  url = "http://localhost:3000/successfulSwap?" + url;
+
   const messageConfig: MailOptions = {
     from: `RC4cal <${process.env.EMAIL}>`,
     to: eventTo.user.email,
@@ -102,9 +110,7 @@ const requestSwap = async (req: Request, res: Response) => {
         </span>
         <br />
         <br />To agree to the swap, please click below.</p>
-    <a href="localhost:3000/successfulSwap?eventIdFrom=${
-      eventFrom.id
-    }&eventIdTo=${eventTo.id}" class="button">Swap Event</a>
+    <a href="${url}" class="button">Swap Event</a>
 </div>`
   };
 
